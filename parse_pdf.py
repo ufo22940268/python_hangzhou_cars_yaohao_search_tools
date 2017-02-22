@@ -7,10 +7,10 @@ from pdfminer.pdfinterp import PDFResourceManager,PDFPageInterpreter
 from pdfminer.layout import LAParams
 from pdfminer.pdfpage import PDFPage
 from cStringIO import StringIO
-import StringIO as SIO
 import json
 import re 
 import os
+from mongo_db import DbService
 
 
 
@@ -65,10 +65,13 @@ class ParsePdf:
         data = self.parse_data()
         with open('./json/%s' %name, 'wb') as f:
             json.dump(data,f)
+    
+    def pdf_to_mongodb(self):
+        db = DbService()
+        col = db.get_collection()
+        db.get_collection(col)
         
 
-
-    
 
 if __name__ == "__main__":
     pdfs = filter( lambda f: not f.startswith('.'), os.listdir('./pdf'))
