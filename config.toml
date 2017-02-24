@@ -1,0 +1,4 @@
+baseurl = "http://example.org/"
+languageCode = "zh-CN"
+title = "摇号查询系统"
+theme = "beautifulhugo"
